@@ -45,7 +45,7 @@ static int isLetter(char c) {
     return ((c >= 'a') && (c <= 'z')) || ((c >= 'A') && (c <= 'Z'));
 }
 
-char* basePath(const char* path) {
+char* basePath_libinstrument(const char* path) {
     char* pos = strchr(path, slash);
     char* last = NULL;
     while (pos != NULL) {
@@ -219,7 +219,7 @@ char* normalize_libinstrument(char* path) {
 /* -- Resolution - src/windows/classes/java/io/Win32FileSystem.java */
 
 
-char* resolve(const char* parent, const char* child) {
+char* resolve_libinstrument(const char* parent, const char* child) {
     char* c;
     char* theChars;
     int parentEnd, childStart, len;
@@ -302,13 +302,13 @@ static int prefixLength(const char* path) {
 }
 
 
-int isAbsolute(const char* path) {
+int isAbsolute_libinstrument(const char* path) {
     int pl = prefixLength(path);
     return (((pl == 2) && (path[0] == slash)) || (pl == 3));
 }
 
 
-char* fromURIPath(const char* path) {
+char* fromURIPath_libinstrument(const char* path) {
     int start = 0;
     int len = (int)strlen(path);
 

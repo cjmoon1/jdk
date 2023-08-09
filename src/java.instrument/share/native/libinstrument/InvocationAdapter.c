@@ -918,7 +918,7 @@ appendBootClassPath( JPLISAgent* agent,
          * Post-process the URI path - needed on Windows to transform
          * /c:/foo to c:/foo.
          */
-        TRANSFORM(path, fromURIPath(path));
+        TRANSFORM(path, fromURIPath_libinstrument(path));
 
         /*
          * Normalize the path - no duplicate slashes (except UNCs on Windows), trailing
@@ -936,7 +936,7 @@ appendBootClassPath( JPLISAgent* agent,
          * In 1.5.0 the AddToBootstrapClassLoaderSearch takes a platform string
          * - see 5049313.
          */
-        if (isAbsolute(path)) {
+        if (isAbsolute_libinstrument(path)) {
             jvmtierr = (*jvmtienv)->AddToBootstrapClassLoaderSearch(jvmtienv, path);
         } else {
             char* resolved;
@@ -947,12 +947,12 @@ appendBootClassPath( JPLISAgent* agent,
                     free(path);
                     continue;
                 }
-                parent = basePath(canonicalPath);
+                parent = basePath_libinstrument(canonicalPath);
                 jplis_assert(parent != (char*)NULL);
                 haveBasePath = 1;
             }
 
-            resolved = resolve(parent, path);
+            resolved = resolve_libinstrument(parent, path);
             jvmtierr = (*jvmtienv)->AddToBootstrapClassLoaderSearch(jvmtienv, resolved);
             free(resolved);
         }

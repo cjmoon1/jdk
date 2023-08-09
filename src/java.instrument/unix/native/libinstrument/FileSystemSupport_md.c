@@ -35,7 +35,7 @@
 
 #define slash           '/'
 
-char* basePath(const char* path) {
+char* basePath_libinstrument(const char* path) {
     char* last = strrchr(path, slash);
     if (last == NULL) {
         return (char*)path;
@@ -54,7 +54,7 @@ char* basePath(const char* path) {
     }
 }
 
-int isAbsolute(const char* path) {
+int isAbsolute_libinstrument(const char* path) {
     return (path[0] == slash) ? 1 : 0;
 }
 
@@ -114,7 +114,7 @@ char* normalize_libinstrument(const char* pathname) {
     return (char*)pathname;
 }
 
-char* resolve(const char* parent, const char* child) {
+char* resolve_libinstrument(const char* parent, const char* child) {
     int len;
     char* theChars;
     int pn = strlen(parent);
@@ -153,7 +153,7 @@ char* resolve(const char* parent, const char* child) {
     return theChars;
 }
 
-char* fromURIPath(const char* path) {
+char* fromURIPath_libinstrument(const char* path) {
     int len = strlen(path);
     if (len > 1 && path[len-1] == slash) {
         // "/foo/" --> "/foo", but "/" --> "/"

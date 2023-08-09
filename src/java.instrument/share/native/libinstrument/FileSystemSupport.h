@@ -31,13 +31,13 @@
  * still has slash separators; code in the File class will translate them
  * after this method returns.
  */
-char* fromURIPath(const char* path);
+char* fromURIPath_libinstrument(const char* path);
 
 /**
  * Return the basen path of the given pathname. If the string is already
  * the base path then it is simply returned.
  */
-char* basePath(const char* path);
+char* basePath_libinstrument(const char* path);
 
 /**
  * Convert the given pathname string to normal form.  If the string is
@@ -48,9 +48,9 @@ char* normalize_libinstrument(const char* path);
 /**
  * Tell whether or not the given abstract pathname is absolute.
  */
-int isAbsolute(const char * path);
+int isAbsolute_libinstrument(const char * path);
 
 /**
  * Resolve the child pathname string against the parent.
  */
-char* resolve(const char* parent, const char* child);
+char* resolve_libinstrument(const char* parent, const char* child);

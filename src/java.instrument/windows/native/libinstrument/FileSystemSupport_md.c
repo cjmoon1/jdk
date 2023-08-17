@@ -45,7 +45,7 @@ static int isLetter(char c) {
     return ((c >= 'a') && (c <= 'z')) || ((c >= 'A') && (c <= 'Z'));
 }
 
-char* basePath_libinstrument(const char* path) {
+char* FFS_basePath(const char* path) {
     char* pos = strchr(path, slash);
     char* last = NULL;
     while (pos != NULL) {
@@ -196,7 +196,7 @@ static char* normalizePath(const char* path, int len, int off) {
  * normalizer on the part of the pathname that requires normalization.
  * This way we iterate through the whole pathname string only once.
  */
-char* normalize_libinstrument(char* path) {
+char* FFS_normalize(char* path) {
     int n = (int)strlen(path);
     int i;
     int prev = 0;
@@ -219,7 +219,7 @@ char* normalize_libinstrument(char* path) {
 /* -- Resolution - src/windows/classes/java/io/Win32FileSystem.java */
 
 
-char* resolve_libinstrument(const char* parent, const char* child) {
+char* FFS_resolve(const char* parent, const char* child) {
     char* c;
     char* theChars;
     int parentEnd, childStart, len;
@@ -302,13 +302,13 @@ static int prefixLength(const char* path) {
 }
 
 
-int isAbsolute_libinstrument(const char* path) {
+int FFS_isAbsolute(const char* path) {
     int pl = prefixLength(path);
     return (((pl == 2) && (path[0] == slash)) || (pl == 3));
 }
 
 
-char* fromURIPath_libinstrument(const char* path) {
+char* FFS_fromURIPath(const char* path) {
     int start = 0;
     int len = (int)strlen(path);
 
